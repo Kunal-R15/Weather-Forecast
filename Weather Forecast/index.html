@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <fieldset class="city-input">
+            <legend>Enter Desired City</legend>
+            <input type="text" id="city" placeholder="Enter City">
+            <button type="button" id="btnSearch">Search</button>
+        </fieldset>
+        <div class="weather-div-container">
+            <div class="cityname">
+                <h2>Noida, Uttar Pradesh As of 11:12 IST</h2>
+            </div>
+            <div class="city-data-container">
+                <div class="city-weather-data">
+                    <div class="current weather-data-div">
+                        <div class="cityData">
+                            <h4 class="weather-date">Current</h4>
+                            <h2 class="current-weather">27&#176</h2>
+                            <p class="weather-condition">Haze</p>
+                            <span id="high-weather">High
+                                <span class="temp-value">29&#176</span>
+                            </span>
+                            <span id="sepration-stop">•</span>
+                            <span id="low-weather">Low
+                                <span class="temp-value">29&#176</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="tomorrow weather-data-div">
+                        <div class="cityData">
+                            <h4 class="weather-date">Tomorrow</h4>
+                            <h2 class="current-weather">27&#176</h2>
+                            <p class="weather-condition">Haze</p>
+                            <span id="high-weather">High
+                                <span class="temp-value">29 &#176</span>
+                            </span>
+                            <span id="sepration-stop">•</span>
+                            <span id="low-weather">Low <span class="temp-value">29&#176</span></span>
+                        </div>
+                    </div>
+                    <div class="day3 weather-data-div">
+                        <div class="cityData">
+                            <h4 class="weather-date"></h4>
+                            <h2 class="current-weather">27&#176</h2>
+                            <p class="weather-condition">Haze</p>
+                            <span id="high-weather">High
+                                <span class="temp-value">29&#176</span>
+                            </span>
+                            <span id="sepration-stop">•</span>
+                            <span id="low-weather">Low <span class="temp-value">29&#176</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="aqi-container">
+                    <h3>Air Quality Index</h3>
+                    <div class="aqi-data">
+                        <span id="measure-no">115</span>
+                        <span>:</span>
+                        <span id="measure-condition">Moderate</span>
+                    </div>
+                </div>
+            </div>
+            <div class="forecast-data">
+            </div>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

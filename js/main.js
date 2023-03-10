@@ -48,14 +48,12 @@ var requestOptions = {
 addEventListener('load', function reloadFirst() {
     alert('Forecast available in Current Weather Info.')
     inputValue = searchCity.value;
-    console.log(inputValue);
     getWeather(api_url);
 })
 
 searchCity.addEventListener('keypress', function getInputValue(event) {
     if (event.key === "Enter") {
         inputValue = searchCity.value;
-        console.log(inputValue);
         if (inputValue !== '' && inputValue !== undefined)
             api_url = 'https://api.weatherapi.com/v1/forecast.json?key=007b91982fa145099db50542230903&q=' + inputValue + '&days=' + noOfDays + '&aqi=yes&alerts=no';
         getWeather(api_url);
@@ -63,23 +61,20 @@ searchCity.addEventListener('keypress', function getInputValue(event) {
 })
 searchBtn.addEventListener('click', function getInputValue() {
     inputValue = searchCity.value;
-    console.log(inputValue);
     if (inputValue !== '' && inputValue !== undefined)
         api_url = 'https://api.weatherapi.com/v1/forecast.json?key=007b91982fa145099db50542230903&q=' + inputValue + '&days=' + noOfDays + '&aqi=yes&alerts=no';
     getWeather(api_url);
 })
 
 function getWeather(api_url) {
-    console.log(api_url);
     fetch(api_url, requestOptions)
         .then((response) => response.json())
-        .then((data) => localStorage.setItem('api_response', JSON.stringify(data)));
-    settingWeatherData();
+        .then((data) => sessionStorage.setItem('api_response', JSON.stringify(data)))
+        .then(data => settingWeatherData());
 }
 
 function settingWeatherData() {
-    var data = JSON.parse(localStorage.getItem('api_response'));
-    console.log(data);
+    var data = JSON.parse(sessionStorage.getItem('api_response'));
     currentWeather(data);
     tomorrowWeather(data);
     day3Weather(data)
@@ -87,7 +82,6 @@ function settingWeatherData() {
 }
 
 function currentWeather(data) {
-    console.log('Entering Here');
     var cityDetails = cityName.querySelector('h2').innerText;
     var timezone = data.location.tz_id + '';
     cityDetails = data.location.name + ", " + data.location.region + " As of " + data.location.localtime.split(' ')[1] + " Timezone: (" + timezone.replace('_', ' ') + ")";
@@ -140,7 +134,6 @@ function aqiIndex(data) {
     // Setting AQI Data
     let aqiValue = Math.round(data.air_quality.pm10, 2);
     aqiMeasure.innerHTML = aqiValue;
-    console.log(getConditon(aqiValue));
     aqiCondiiton.innerHTML = getConditon(aqiValue).split('|')[0];
     aqiContaniner.style.borderColor = getConditon(aqiValue).split('|')[1];
 
@@ -162,7 +155,6 @@ function getTwoDaysAhead() {
 function getConditon(aqiValue) {
     var condition = '';
     var color = '';
-    console.log(aqiValue);
     if (aqiValue < 50) {
         condition = 'Good';
         color = 'Green';
@@ -187,13 +179,10 @@ function getConditon(aqiValue) {
         condition = 'Severe';
         color = '#6e1a37'
     }
-
-    console.log(condition);
     return condition + '|' + color;
 }
 
 weatherData.addEventListener('click', function displayForecast(e) {
-    console.log(e.target);
     forecast(JSON.parse(localStorage.getItem('api_response')));
 });
 

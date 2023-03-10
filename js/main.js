@@ -36,12 +36,13 @@ var forecastData = document.querySelector('.forecast-data');
 // Default Data
 var inputValue = 'Noida';
 var noOfDays = prompt("Enter No. of Days Between (5-14) for weather forecast: ");
-var api_url = 'http://api.weatherapi.com/v1/forecast.json?key=007b91982fa145099db50542230903&q=Haridwar&days=' + noOfDays + '&aqi=yes&alerts=no';
+var api_url = 'https://api.weatherapi.com/v1/forecast.json?key=007b91982fa145099db50542230903&q=Haridwar&days=' + noOfDays + '&aqi=yes&alerts=no';
 
 
 var requestOptions = {
     method: 'GET',
     redirect: 'follow',
+
 };
 
 addEventListener('load', function reloadFirst() {
@@ -56,7 +57,7 @@ searchCity.addEventListener('keypress', function getInputValue(event) {
         inputValue = searchCity.value;
         console.log(inputValue);
         if (inputValue !== '' && inputValue !== undefined)
-            api_url = 'http://api.weatherapi.com/v1/forecast.json?key=007b91982fa145099db50542230903&q=' + inputValue + '&days=' + noOfDays + '&aqi=yes&alerts=no';
+            api_url = 'https://api.weatherapi.com/v1/forecast.json?key=007b91982fa145099db50542230903&q=' + inputValue + '&days=' + noOfDays + '&aqi=yes&alerts=no';
         getWeather(api_url);
     }
 })
@@ -64,7 +65,7 @@ searchBtn.addEventListener('click', function getInputValue() {
     inputValue = searchCity.value;
     console.log(inputValue);
     if (inputValue !== '' && inputValue !== undefined)
-        api_url = 'http://api.weatherapi.com/v1/forecast.json?key=007b91982fa145099db50542230903&q=' + inputValue + '&days=' + noOfDays + '&aqi=yes&alerts=no';
+        api_url = 'https://api.weatherapi.com/v1/forecast.json?key=007b91982fa145099db50542230903&q=' + inputValue + '&days=' + noOfDays + '&aqi=yes&alerts=no';
     getWeather(api_url);
 })
 

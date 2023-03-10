@@ -183,7 +183,7 @@ function getConditon(aqiValue) {
 }
 
 weatherData.addEventListener('click', function displayForecast(e) {
-    forecast(JSON.parse(localStorage.getItem('api_response')));
+    forecast(JSON.parse(sessionStorage.getItem('api_response')));
 });
 
 
